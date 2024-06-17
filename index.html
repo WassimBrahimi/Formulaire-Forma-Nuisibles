@@ -6,6 +6,43 @@
     <script src="https://cdn.tailwindcss.com"></script>
   </head>
   <body class="bg-cyan-50/40">
+    <script>
+      // Set the date we're counting down to
+      var countDownDate = new Date("june 29, 2024 00:00:01").getTime();
+
+      // Update the count down every 1 second
+      var x = setInterval(function () {
+        // Get today's date and time
+        var now = new Date().getTime();
+
+        // Find the distance between now and the count down date
+        var distance = countDownDate - now;
+
+        // Time calculations for days, hours, minutes and seconds
+        var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        var hours = Math.floor(
+          (distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+        );
+        var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+        // Display the result in the element with id="demo"
+        document.getElementById("demo").innerHTML =
+          days + " J " + hours + "h " + minutes + "m " + seconds + "s ";
+
+        // If the count down is finished, write some text
+        if (distance < 0) {
+          clearInterval(x);
+          document.getElementById("demo").innerHTML = "EXPIRED";
+        }
+      }, 1000);
+    </script>
+    <div
+      class="w-screen absolute top-0 bg-red-900 text-white p-1 text-center font-serif font-light"
+    >
+      Offre speciale ! Acces a toute la formation pour
+      <span class="underline">30 000 Da</span> seulement.
+    </div>
     <div class="flex justify-center m-10">
       <img
         src="/media/WhatsApp Image 2024-06-13 at 12.08.01.jpeg"
@@ -13,11 +50,45 @@
       />
     </div>
 
-    <form class="max-w-xl mx-auto bg-white p-10 border rounded-xl shadow-lg">
+    <form
+      class="max-w-md md:max-w-xl mx-auto bg-white p-10 border rounded-xl shadow-lg"
+      action="https://formsubmit.co/formanuisibles2024@gmail.com"
+      method="POST"
+    >
+      <input
+        type="hidden"
+        name="_autoresponse"
+        value="Bonjour,
+
+      Merci pour votre candidature. Nous l'avons bien reçue et la traiterons sous peu. Nous vous recontacterons rapidement.
+      
+      Cordialement,
+      
+      L'équipe Forma Nuisibles"
+      />
+      <input type="text" name="_honey" style="display: none" />
+
       <div class="flex justify-center">
         <div class="text-3xl mb-10 font-semibold text-cyan-600">
           Formulaire de candidature
         </div>
+      </div>
+
+      <div class="relative z-0 w-full mb-5 group">
+        <input
+          type="tel"
+          pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
+          name="floating_phone"
+          id="floating_phone"
+          class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-cyan-500 peer"
+          placeholder=" "
+          required
+        />
+        <label
+          for="floating_phone"
+          class="peer-focus:font-medium absolute text-sm text-gray-500 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-cyan-500 peer-focus:dark:text-cyan-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+          >Numéro de téléphone</label
+        >
       </div>
       <div class="relative z-0 w-full mb-5 group">
         <input
@@ -34,36 +105,7 @@
           >Adresse E-mail</label
         >
       </div>
-      <div class="relative z-0 w-full mb-5 group">
-        <input
-          type="password"
-          name="floating_password"
-          id="floating_password"
-          class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-cyan-500 peer"
-          placeholder=" "
-          required
-        />
-        <label
-          for="floating_password"
-          class="peer-focus:font-medium absolute text-sm text-gray-500 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-cyan-500 peer-focus:dark:text-cyan-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
-          >Password</label
-        >
-      </div>
-      <div class="relative z-0 w-full mb-5 group">
-        <input
-          type="password"
-          name="repeat_password"
-          id="floating_repeat_password"
-          class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-cyan-500 peer"
-          placeholder=" "
-          required
-        />
-        <label
-          for="floating_repeat_password"
-          class="peer-focus:font-medium absolute text-sm text-gray-500 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-cyan-500 peer-focus:dark:text-cyan-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
-          >Confirm password</label
-        >
-      </div>
+
       <div class="grid md:grid-cols-2 md:gap-6">
         <div class="relative z-0 w-full mb-5 group">
           <input
@@ -96,45 +138,72 @@
           >
         </div>
       </div>
+
       <div class="grid md:grid-cols-2 md:gap-6">
         <div class="relative z-0 w-full mb-5 group">
           <input
-            type="tel"
-            pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
-            name="floating_phone"
-            id="floating_phone"
+            type="text"
+            name="Entreprise"
+            id="Entreprise"
             class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-cyan-500 peer"
             placeholder=" "
             required
           />
           <label
-            for="floating_phone"
+            for="Entreprise"
             class="peer-focus:font-medium absolute text-sm text-gray-500 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-cyan-500 peer-focus:dark:text-cyan-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
-            >Numéro de téléphone</label
+            >Entreprise</label
           >
         </div>
         <div class="relative z-0 w-full mb-5 group">
           <input
             type="text"
-            name="floating_company"
-            id="floating_company"
+            name="Poste"
+            id="Poste"
             class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-cyan-500 peer"
             placeholder=" "
             required
           />
           <label
-            for="floating_company"
+            for="Poste"
             class="peer-focus:font-medium absolute text-sm text-gray-500 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-cyan-500 peer-focus:dark:text-cyan-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
-            >Company (Ex. Google)</label
+            >Poste</label
           >
         </div>
       </div>
+
       <button
         type="submit"
         class="text-white bg-cyan-700 hover:bg-cyan-800 focus:ring-4 focus:outline-none focus:ring-cyan-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-cyan-500 dark:hover:bg-cyan-700 dark:focus:ring-cyan-800"
       >
-        Submit
+        Envoyer
       </button>
     </form>
+    <div class="flex justify-center">
+      <div class="text-center p-5">
+        <div class="font-semibold text-xl text-cyan-500">
+          Envoyez votre candidature des maintenant et ne perdez pas plus de
+          temps
+        </div>
+        <div id="demo" class="text-xl"></div>
+      </div>
+    </div>
+    <div class="flex justify-center">
+      <div class="mt-5 mb-2 text-gray-300 w-72 text-center text-[10px]">
+        * Les données envoyées via ce formulaire seront traitées exclusivement
+        par notre équipe. Elles ne seront ni partagées avec des tiers ni
+        utilisées à d'autres fins que celles liées à cette candidature. Nous
+        utilisons FormSubmit pour la collecte des informations.
+      </div>
+    </div>
+
+    <img
+      src="media/Capture_d_écran_2024-06-17_à_19.09.15-removebg-preview.png"
+      class="hidden md:block absolute bottom-0 w-60"
+    />
+    <img
+      src="media/Capture_d_écran_2024-06-17_à_19.12.34-removebg-preview.png"
+      class="hidden md:block absolute bottom-0 right-0 w-60"
+    />
   </body>
 </html>
